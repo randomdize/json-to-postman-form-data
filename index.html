@@ -1,0 +1,22 @@
+<html>
+  <head>
+    <title>json to postman bulkinput</title>
+  </head>
+  <body>
+    <textarea id="input" style="width:40%; height:100%;"></textarea>
+    <textarea id="output" style="width:40%; height:100%;"></textarea>
+    <button id="transform">transform</button>
+  </body>
+  <script>
+    let transform = function(inputText) {
+      let obj = JSON.parse(inputText);
+      obj.forEach(function(item) {
+        output.value += `${item.Key}:${item.Value}\n`
+      });
+    };
+    let input = document.getElementById("input");
+    let output = document.getElementById("output");
+    let button = document.getElementById("transform");
+    button.addEventListener("click", function() { transform(input.value); }, false);
+  </script>
+</html>
